@@ -1,82 +1,95 @@
 import java.util.List;
 import java.util.Scanner;
 
-import controller.ListItemHelper;
-import model.ListItem;
+import controller.TeamItemHelper;
+import model.TeamItem;
 
 public class StartProgram {
 
 		static Scanner in = new Scanner(System.in);
-		static ListItemHelper lih = new ListItemHelper();
+		static TeamItemHelper tih = new TeamItemHelper();
 
 		private static void addAnItem() {
 			// TODO Auto-generated method stub
-			System.out.print("Enter a store: ");
-			String store = in.nextLine();
-			System.out.print("Enter an item: ");
-			String item = in.nextLine();
-
+			System.out.print("Enter the City to Add: ");
+			String city = in.nextLine();
+			System.out.print("Enter the Nick Name to Add: ");
+			String nickName = in.nextLine();
+			System.out.print("Enter the number of playes to Add: ");
+			int numOfPlayers = in.nextInt();
+			TeamItem toAdd = new TeamItem(city, nickName, numOfPlayers);
+			tih.insertItem(toAdd);
 		}
 
 		private static void deleteAnItem() {
 			// TODO Auto-generated method stub
-			System.out.print("Enter the store to delete: ");
-			String store = in.nextLine();
-			System.out.print("Enter the item to delete: ");
-			String item = in.nextLine();
+			System.out.print("Enter the City to delete: ");
+			String city = in.nextLine();
+			System.out.print("Enter the Nick Name to delete: ");
+			String nickName = in.nextLine();
+			System.out.print("Enter the number of playes to delete: ");
+			int numOfPlayers = in.nextInt();
+			TeamItem toDelete = new TeamItem(city, nickName, numOfPlayers);
+			tih.deleteItem(toDelete);
 
 		}
 
 		private static void editAnItem() {
 			// TODO Auto-generated method stub
 			System.out.println("How would you like to search? ");
-			System.out.println("1 : Search by Store");
-			System.out.println("2 : Search by Item");
+			System.out.println("1 : Search by City");
+			System.out.println("2 : Search by Nick Name");
 			int searchBy = in.nextInt();
 			in.nextLine();
-			/*List<ListItem> foundItems;
+			List<TeamItem> foundItems;
 			if (searchBy == 1) {
-				System.out.print("Enter the store name: ");
-				String storeName = in.nextLine();
+				System.out.print("Enter the city: ");
+				String cityName = in.nextLine();
+				foundItems = tih.searchForItemByCity(cityName);
 				
 			} else {
-				System.out.print("Enter the item: ");
-				String itemName = in.nextLine();
-				
+				System.out.print("Enter the nick name: ");
+				String nickName = in.nextLine();
+				foundItems = tih.searchforItemByNickName(nickName);
 
 			}
 
 			if (!foundItems.isEmpty()) {
 				System.out.println("Found Results.");
-				for (ListItem l : foundItems) {
-					System.out.println(l.getId() + " : " + l.toString());
+				for (TeamItem t : foundItems) {
+					System.out.println(t.getId() + " : " + t.toString());
 				}
 				System.out.print("Which ID to edit: ");
 				int idToEdit = in.nextInt();
 
-				ListItem toEdit = lih.searchForItemById(idToEdit);
-				System.out.println("Retrieved " + toEdit.getItem() + " from " + toEdit.getStore());
-				System.out.println("1 : Update Store");
-				System.out.println("2 : Update Item");
+				TeamItem toEdit = tih.searchForItemById(idToEdit);
+				System.out.println("Retrieved " + toEdit.getNickName() + " from " + toEdit.getCity() + "With " + toEdit.getNumOfPlayers() + " Players");
+				System.out.println("1 : Update city");
+				System.out.println("2 : Update nick name");
+				System.out.println("3 : Update number of players");
 				int update = in.nextInt();
 				in.nextLine();
 
 				if (update == 1) {
-					System.out.print("New Store: ");
-					String newStore = in.nextLine();
-					toEdit.setStore(newStore);
+					System.out.print("New City: ");
+					String newCity = in.nextLine();
+					toEdit.setCity(newCity);
 				} else if (update == 2) {
-					System.out.print("New Item: ");
-					String newItem = in.nextLine();
-					toEdit.setItem(newItem);
+					System.out.print("New Nick Name: ");
+					String newNickName = in.nextLine();
+					toEdit.setNickName(newNickName);
+				}
+				else if (update == 3) {
+					System.out.println("New number of players");
+					int newNumOfPlayer = in.nextInt();
+					toEdit.setNumOfPlayers(newNumOfPlayer);
 				}
 
-				lih.updateItem(toEdit);
+				tih.updateItem(toEdit);
 
 			} else {
 				System.out.println("---- No results found");
 			}
-*/
 		}
 
 		public static void main(String[] args) {
@@ -108,7 +121,7 @@ public class StartProgram {
 				} else if (selection == 4) {
 					viewTheList();
 				} else {
-					//lih.cleanUp();
+					tih.cleanUp();
 					System.out.println("   Goodbye!   ");
 					goAgain = false;
 				}
@@ -118,7 +131,10 @@ public class StartProgram {
 		}
 
 		private static void viewTheList() {
-			// TODO Auto-generated method stub
+			List<TeamItem> allItems = tih.showAllItems();
+			for(TeamItem singleItem : allItems) {
+				System.out.println(singleItem.returnItemDetails());
+			}
 			
 
 		}
