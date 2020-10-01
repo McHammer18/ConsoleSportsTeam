@@ -59,7 +59,7 @@ public class TeamItemHelper {
 	public List<TeamItem> searchforItemByNickName(String nickName) {
 		EntityManager em	=	emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<TeamItem> typedQuery = em.createQuery("select ti from TeamItem	ti where ti.item = :selectedNickName",	TeamItem.class);
+		TypedQuery<TeamItem> typedQuery = em.createQuery("select ti from TeamItem ti where ti.nickName = :selectedNickName",	TeamItem.class);
 		typedQuery.setParameter("selectedNickName",	nickName);
 		List<TeamItem> foundItems =	typedQuery.getResultList();
 		em.close();

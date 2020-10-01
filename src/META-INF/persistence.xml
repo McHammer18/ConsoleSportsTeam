@@ -5,9 +5,9 @@
 		<class>model.TeamItem</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/teams"/>
-			<property name="javax.persistence.jdbc.user" value="root"/>
-			<property name="javax.persistence.jdbc.password" value="Dr!um8s14"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://cis175.cta7wvbywkyo.us-east-1.rds.amazonaws.com/teams"/>
+			<property name="javax.persistence.jdbc.user" value="admin"/>
+			<property name="javax.persistence.jdbc.password" value="Mu!si8c14"/>
 		</properties>
 	</persistence-unit>
 </persistence>
