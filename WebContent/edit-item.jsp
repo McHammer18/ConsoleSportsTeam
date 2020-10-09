@@ -10,7 +10,7 @@
 <body>
 <h2>Edit My Team List</h2>
 
-<form action ="editItemServlet"method="post">
+<form action ="editLeaguesServlet"method="post">
 City: <input type ="text"name ="city"value="${itemToEdit.city}">
 Team: <input type ="text"name ="team"value="${itemToEdit.nickName}">
 Number of Players: <input type ="text"name ="numOfPlayers"value="${itemToEdit.numOfPlayers}">
