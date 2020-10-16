@@ -53,7 +53,7 @@ public class CreateNewLeagueServlet extends HttpServlet {
 		}
 		
 		String[] selectedItems = request.getParameterValues("allItemsToAdd");
-		List<TeamItem> selectedItemsInList = new ArrayList<TeamItem>();
+		List<TeamItem> selectedItemsInLeague = new ArrayList<TeamItem>();
 		
 		if (selectedItems != null && selectedItems.length > 0)
 		{
@@ -61,13 +61,13 @@ public class CreateNewLeagueServlet extends HttpServlet {
 			{
 				System.out.println(selectedItems[i]);
 				TeamItem ti = tih.searchForItemById(Integer.parseInt(selectedItems[i]));
-				selectedItemsInList.add(ti);
+				selectedItemsInLeague.add(ti);
 			}
 		}
 		
 		Player player = new Player(playerName);
 		League l = new League(leagueName, ld, player);
-		l.setListOfItems(selectedItemsInList);
+		l.setListOfItems(selectedItemsInLeague);
 		LeagueHelper lh = new LeagueHelper();
 		lh.insertNewLeague(l);
 		

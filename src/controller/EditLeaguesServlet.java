@@ -71,20 +71,20 @@ public class EditLeaguesServlet extends HttpServlet {
 		try
 		{
 			String[] selectedItems = request.getParameterValues("allItemsToAdd");
-			List<TeamItem> selectedItemsInList = new ArrayList<TeamItem>();
+			List<TeamItem> selectedItemsInLeague = new ArrayList<TeamItem>();
 			
 			for(int i = 0; i < selectedItems.length; i ++)
 			{
 				System.out.println(selectedItems[i]);
 				TeamItem ti = tih.searchForItemById(Integer.parseInt(selectedItems[i]));
-				selectedItemsInList.add(ti);
+				selectedItemsInLeague.add(ti);
 			}
-			leagueToUpdate.setListOfItems(selectedItemsInList);
+			leagueToUpdate.setListOfItems(selectedItemsInLeague);
 		}
 		catch(NullPointerException ex)
 		{
-			List<TeamItem> selecetedItemsInList = new ArrayList<TeamItem>();
-			leagueToUpdate.setListOfItems(selecetedItemsInList);
+			List<TeamItem> selecetedItemsInLeague = new ArrayList<TeamItem>();
+			leagueToUpdate.setListOfItems(selecetedItemsInLeague);
 		}
 		
 		leagueToUpdate.setLeagueName(newLeageName);

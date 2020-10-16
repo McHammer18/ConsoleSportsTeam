@@ -24,7 +24,7 @@ public class LeagueHelper {
 	public List<League> showAllLeagues()
 	{
 		EntityManager em = emfactory.createEntityManager();
-		List<League> allLeagues = em.createNamedQuery("SELECT l FROM League l").getResultList();
+		List<League> allLeagues = em.createQuery("SELECT d FROM League d").getResultList();
 		return allLeagues;
 	}
 	
@@ -34,7 +34,7 @@ public class LeagueHelper {
 		EntityManager em = emfactory.createEntityManager();
 		
 		em.getTransaction().begin();
-		TypedQuery<League> typedQuery = em.createNamedQuery("select league from League league where league.id = :selectedId", League.class);
+		TypedQuery<League> typedQuery = em.createQuery("select league from League league where league.id = :selectedId", League.class);
 		
 		typedQuery.setParameter("selectedId", toDelete.getId());
 		

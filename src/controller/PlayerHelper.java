@@ -25,7 +25,7 @@ public class PlayerHelper {
 	public List<Player> showAllPlayers()
 	{
 		EntityManager em = emfactory.createEntityManager();
-		List<Player> allPlayers = em.createNamedQuery("SELECT p FROM Player p").getResultList();
+		List<Player> allPlayers = em.createQuery("SELECT p FROM Player p").getResultList();
 		return allPlayers;
 	}
 	
