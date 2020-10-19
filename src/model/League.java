@@ -33,7 +33,7 @@ public class League {
 	@OneToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 		@JoinTable
 		(
-				name="ITEMS_IN_LIST",
+				name="items_in_list",
 				joinColumns= {@JoinColumn(name="LEAGUE_ID", referencedColumnName="LEAGUE_ID")},
 				inverseJoinColumns= {@JoinColumn(name="ITEM_ID", referencedColumnName="ID", unique=true)}
 				)
