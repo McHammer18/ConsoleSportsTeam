@@ -14,8 +14,12 @@
 	Player Name: <input type = "text" name = "playerName"><br />
 	Available Items:<br />
 	<select name="allItemsToAdd" multiple size="6">
+	<!-- I don't think leagues should be displayed here - seems to me like it should be teams.
+	However the teams are not being passed over - you are passing leagues.  But the object above looks like it should be the league.
+	Not sure what is really going on or what the layout of the objects should look like.  Teams belong to leagues, right?
+	 -->
 		<c:forEach items="${requestScope.allLeagues}" var="currentleague">
-			<option value = "${currenntleague.id }">${currentleague.city} | ${currentleague.nickName }</option>
+			<option value = "${currentleague.id }"> |</option>
 		</c:forEach>
 	</select>
 	<br />

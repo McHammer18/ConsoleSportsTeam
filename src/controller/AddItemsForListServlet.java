@@ -32,7 +32,7 @@ public class AddItemsForListServlet extends HttpServlet {
 		
 		if(dao.showAllLeagues().isEmpty())
 		{
-			request.setAttribute("allLeages", " ");
+			request.setAttribute("allLeagues", " ");
 		}
 		
 		getServletContext().getRequestDispatcher("/new-league.jsp").forward(request, response);
